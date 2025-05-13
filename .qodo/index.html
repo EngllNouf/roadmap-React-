@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Learning Progress</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: #161b22;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border: 1px solid #30363d;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #21262d;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: #238636;
+            transition: width 0.3s ease;
+        }
+
+        .section {
+            background: #161b22;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #30363d;
+        }
+
+        .section h2 {
+            color: #58a6ff;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .task-list {
+            list-style: none;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 8px 0;
+            background: #0d1117;
+            border: 1px solid #30363d;
+        }
+
+        .task-item:hover {
+            background: #1c2128;
+        }
+
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: #238636;
+        }
+
+        .task-text {
+            flex: 1;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: #8b949e;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding: 20px;
+            background: #161b22;
+            border-radius: 10px;
+            border: 1px solid #30363d;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #58a6ff;
+        }
+
+        .stat-label {
+            color: #8b949e;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>React Learning Progress</h1>
+            <div class="progress-bar">
+                <div class="progress" id="totalProgress"></div>
+            </div>
+        </header>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="completedTasks">0</div>
+                <div class="stat-label">Tasks Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="totalTasks">0</div>
+                <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="completionRate">0%</div>
+                <div class="stat-label">Completion Rate</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Week 1: Fundamentals</h2>
+            <ul class="task-list">
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task1">
+                    <span class="task-text">React Setup & Introduction</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task2">
+                    <span class="task-text">JSX & Components</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task3">
+                    <span class="task-text">Props & State Basics</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task4">
+                    <span class="task-text">Event Handling</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task5">
+                    <span class="task-text">Conditional Rendering</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Week 2: Hooks & Effects</h2>
+            <ul class="task-list">
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task6">
+                    <span class="task-text">useState Hook</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task7">
+                    <span class="task-text">useEffect Hook</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task8">
+                    <span class="task-text">Custom Hooks</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task9">
+                    <span class="task-text">useRef & useContext</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task10">
+                    <span class="task-text">useReducer Hook</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Week 3: State Management</h2>
+            <ul class="task-list">
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task11">
+                    <span class="task-text">Redux Fundamentals</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task12">
+                    <span class="task-text">Redux Toolkit</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task13">
+                    <span class="task-text">Context API Advanced</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task14">
+                    <span class="task-text">State Management Patterns</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task15">
+                    <span class="task-text">Redux Middleware</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Week 4: Advanced Concepts</h2>
+            <ul class="task-list">
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task16">
+                    <span class="task-text">Performance Optimization</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task17">
+                    <span class="task-text">React Router</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task18">
+                    <span class="task-text">Testing in React</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task19">
+                    <span class="task-text">TypeScript with React</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="task20">
+                    <span class="task-text">Next.js Basics</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Practice Projects</h2>
+            <ul class="task-list">
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="project1">
+                    <span class="task-text">Todo Application</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="project2">
+                    <span class="task-text">Weather App</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="project3">
+                    <span class="task-text">Shopping Cart</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="project4">
+                    <span class="task-text">Blog Platform</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="checkbox" id="project5">
+                    <span class="task-text">Portfolio Website</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Function to save checkbox states
+        function saveCheckboxStates() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const states = {};
+            checkboxes.forEach(checkbox => {
+                states[checkbox.id] = checkbox.checked;
+            });
+            localStorage.setItem('checkboxStates', JSON.stringify(states));
+            updateStats();
+        }
+
+        // Function to load checkbox states
+        function loadCheckboxStates() {
+            const states = JSON.parse(localStorage.getItem('checkboxStates'));
+            if (states) {
+                Object.keys(states).forEach(id => {
+                    const checkbox = document.getElementById(id);
+                    if (checkbox) {
+                        checkbox.checked = states[id];
+                        if (states[id]) {
+                            checkbox.nextElementSibling.classList.add('completed');
+                        }
+                    }
+                });
+            }
+            updateStats();
+        }
+
+        // Function to update statistics
+        function updateStats() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const totalTasks = checkboxes.length;
+            const completedTasks = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const completionRate = Math.round((completedTasks / totalTasks) * 100);
+
+            document.getElementById('completedTasks').textContent = completedTasks;
+            document.getElementById('totalTasks').textContent = totalTasks;
+            document.getElementById('completionRate').textContent = `${completionRate}%`;
+            document.getElementById('totalProgress').style.width = `${completionRate}%`;
+        }
+
+        // Add event listeners
+        document.querySelectorAll('.checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const taskText = this.nextElementSibling;
+                if (this.checked) {
+                    taskText.classList.add('completed');
+                } else {
+                    taskText.classList.remove('completed');
+                }
+                saveCheckboxStates();
+            });
+        });
+
+        // Load states when page loads
+        window.addEventListener('load', loadCheckboxStates);
+    </script>
+</body>
+</html>
